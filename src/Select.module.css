@@ -10,9 +10,9 @@
 	border-radius: 4px;
 	text-transform: capitalize;
 }
-.container:focus{
+/* .container:focus{
 	background-color: #333;
-}
+} */
 .values{
 
 	flex: 1;
@@ -86,14 +86,15 @@ cursor: pointer;
 	cursor: pointer;
 }
 
-.option:hover , .option:focus{
-	background-color: hsl(216, 88%, 74%);
-}
-
 .option.hihgligh{
 	background-color: hsl(216, 68%, 48%);
 	color: white;
 }
+.option:hover , .option:focus{
+	background-color: hsl(216, 88%, 74%);
+}
+
+
 
 
 

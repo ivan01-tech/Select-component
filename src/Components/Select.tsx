@@ -5,7 +5,6 @@ export type OptionsType = {
   label: string;
   value: string | number;
 };
-let a = 0;
 type MultipleSelect = {
   value: OptionsType[];
   multiple: true;
@@ -49,7 +48,7 @@ const Select: React.FC<SelectProps> = ({
       else onchange([...value, op]);
     } else onchange(op);
   };
-
+  // to handle keybord accessibility
   useEffect(
     function () {
       const handler = (e: KeyboardEvent) => {
@@ -61,7 +60,17 @@ const Select: React.FC<SelectProps> = ({
             console.log(IsOpen);
             break;
           case "ArrowUp":
+            console.log(e.code);
+            if (IsOpen)
+              setHighLighdedIndex((prev) =>
+                prev > 0 ? prev - 1 : options.length - 1
+              );
+            break;
           case "ArrowDown":
+            if (IsOpen)
+              setHighLighdedIndex((prev) =>
+                prev < options.length - 1 ? prev + 1 : 0
+              );
             break;
           case "Escape":
             setIsOpen(false);
@@ -75,7 +84,7 @@ const Select: React.FC<SelectProps> = ({
     },
     [IsOpen]
   );
-  console.log("object");
+
   return (
     <div
       onBlur={() => IsOpen && setIsOpen((prev) => !prev)}
@@ -118,7 +127,9 @@ const Select: React.FC<SelectProps> = ({
               !multiple
                 ? value?.value == op.value && styles.hihgligh
                 : value.some((p) => p.value == op.value) && styles.hihgligh
-            }`}
+            } 
+            ${ind == HighLighdedIndex && multiple && styles.hihgligh}
+            `}
             key={op.value}
           >
             {op.label}
