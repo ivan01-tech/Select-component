@@ -1,0 +1,36 @@
+*,*::after,*::before{
+padding: 0;margin: 0; box-sizing: border-box;
+}
+
+.App{
+	padding: 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 30px;
+	margin: 0 auto;
+	min-width: 100vw;
+	min-height: 100vh;
+	background-color: rgb(34, 121, 221);
+}
+.item{
+	display: flex;
+	flex-direction: column;
+	min-width: 300px;
+	padding: 2rem;
+	color: black;
+	width: 30%;
+	display: flex;
+	min-height: 400px;
+	background-color: white;
+}
+.item h4{
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+@media all and (max-width:600px) {
+	.App{
+		flex-direction: column;
+	}
+}
